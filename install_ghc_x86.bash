@@ -1,11 +1,6 @@
 #!/bin/bash
 set -ex
 
-# Link python3.12 to python3
-#ln -s "/usr/local/bin/python3.12" "/usr/local/bin/python3"
-
-# Install wget 3.2
-python3 -m pip install wget==3.2
 
 # Install GHC 9.6.5
 python3 -c "import wget; wget.download('https://downloads.haskell.org/~ghc/9.6.5/ghc-9.6.5-x86_64-deb9-linux.tar.xz', '/tmp/ghc-9.6.5.tar.xz')"
