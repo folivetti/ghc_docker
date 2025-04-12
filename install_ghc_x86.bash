@@ -2,7 +2,7 @@
 set -ex
 
 # Link python3.12 to python3
-ln -s "/usr/local/bin/python3.12" "/usr/local/bin/python3"
+#ln -s "/usr/local/bin/python3.12" "/usr/local/bin/python3"
 
 # Install wget 3.2
 python3 -m pip install wget==3.2
