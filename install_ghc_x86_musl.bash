@@ -3,7 +3,7 @@ set -ex
 
 
 # Install GHC 9.6.5
-python3 -c "import wget; wget.download('https://downloads.haskell.org/~ghc/9.6.4/ghc-9.6.4-x86_64-centos7-linux.tar.xz', '/tmp/ghc-9.6.4.tar.xz')"
+python3 -c "import wget; wget.download('https://downloads.haskell.org/~ghc/9.6.4/ghc-9.6.4-x86_64-alpine3_12-linux.tar.xz', '/tmp/ghc-9.6.4.tar.xz')"
 python3 -c "import shutil; shutil.unpack_archive('/tmp/ghc-9.6.4.tar.xz', '/tmp')"
 (mv "/tmp/ghc-9.6.4-x86_64-unknown-linux" "/tmp/ghc-9.6.4")
 (cd "/tmp/ghc-9.6.4" && ./configure --prefix="/tmp/ghc-toolset-9.6.4/root/usr")
