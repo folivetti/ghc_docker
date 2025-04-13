@@ -4,7 +4,7 @@ set -ex
 # Install GHC 9.6.5
 python3 -c "import wget; wget.download('https://downloads.haskell.org/~ghc/9.6.5/ghc-9.6.5-i386-deb9-linux.tar.xz', '/tmp/ghc-9.6.5.tar.xz')"
 python3 -c "import shutil; shutil.unpack_archive('/tmp/ghc-9.6.5.tar.xz', '/tmp')"
-(mv "/tmp/ghc-9.6.5-x86_64-unknown-linux" "/tmp/ghc-9.6.5")
+(mv "/tmp/ghc-9.6.5-i386-unknown-linux" "/tmp/ghc-9.6.5")
 (cd "/tmp/ghc-9.6.5" && ./configure --prefix="/tmp/ghc-toolset-9.6.5/root/usr")
 (cd "/tmp/ghc-9.6.5" && make install)
 rm -rf "/tmp/ghc-9.6.5" "/tmp/ghc-9.6.5.tar.xz"
