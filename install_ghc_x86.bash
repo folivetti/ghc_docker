@@ -27,7 +27,7 @@ python3 -c "import shutil; shutil.unpack_archive('/tmp/ghc-9.12.1-src.tar.xz', '
 #rm -rf "/tmp/ghc-9.12.1-patches"
 
 (cd "/tmp/ghc-9.12.1" && PATH="/tmp/ghc-toolset-9.6.4/root/usr/bin:${PATH}" ./configure GHC="/tmp/ghc-toolset-9.6.4/root/usr/bin/ghc-9.6.4")
-(cd "/tmp/ghc-9.12.1" && PATH="/tmp/ghc-toolset-9.6.4/root/usr/bin:${PATH}" hadrian/build install --docs=none -j --prefix="/usr/local")
+(cd "/tmp/ghc-9.12.1" && PATH="/tmp/cabal/_build/bin:/tmp/ghc-toolset-9.6.4/root/usr/bin:${PATH}" hadrian/build install --docs=none -j --prefix="/usr/local")
 rm -rf "/tmp/ghc-toolset-9.6.4" "/tmp/ghc-9.12.1" "/tmp/ghc-9.12.1-src.tar.xz" "/tmp/ghc-9.12.1-patches"
 
 # Unlink python3.12 from python3
