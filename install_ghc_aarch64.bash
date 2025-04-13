@@ -22,8 +22,8 @@ PATH="/tmp/ghc-toolset-9.6.4/root/usr/bin:${PATH}" "/tmp/cabal/_build/bin/cabal"
 python3 -c "import wget; wget.download('https://downloads.haskell.org/~ghc/9.12.1/ghc-9.12.1-src.tar.xz', '/tmp/ghc-9.12.1-src.tar.xz')"
 python3 -c "import shutil; shutil.unpack_archive('/tmp/ghc-9.12.1-src.tar.xz', '/tmp')"
 
-(cd "/tmp" && patch -p0 < "/tmp/ghc-9.12.1-patches/fpic-default.patch")
-rm -rf "/tmp/ghc-9.12.1-patches"
+#(cd "/tmp" && patch -p0 < "/tmp/ghc-9.12.1-patches/fpic-default.patch")
+#rm -rf "/tmp/ghc-9.12.1-patches"
 
 (cd "/tmp/ghc-9.12.1" && PATH="/tmp/ghc-toolset-9.6.4/root/usr/bin:${PATH}" ./configure GHC="/tmp/ghc-toolset-9.6.4/root/usr/bin/ghc-9.6.4")
 (cd "/tmp/ghc-9.12.1" && PATH="/tmp/ghc-toolset-9.6.4/root/usr/bin:${PATH}" hadrian/build install --docs=none -j --prefix="/usr/local")
