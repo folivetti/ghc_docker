@@ -6,16 +6,6 @@ FROM quay.io/pypa/manylinux2014_i686
 RUN yum install -y gmp-devel ncurses-devel
 
 # Install GHC and Cabal
-RUN <<EOT bash
-set -ex
-
-# Link python3.12 to python3
-ln -s "/usr/local/bin/python3.12" "/usr/local/bin/python3"
-
-# Install wget 3.2
-python3 -m pip install wget==3.2
-
-# Install GHC and Cabal
 RUN ln -s "/usr/local/bin/python3.12" "/usr/local/bin/python3"
 RUN python3 -m pip install wget==3.2
 RUN python3 -c "import wget; wget.download('https://raw.githubusercontent.com/folivetti/ghc_docker/refs/heads/main/install_ghc_i686.bash', '/tmp/install_ghc_i686.bash')"
