@@ -14,6 +14,7 @@ python3 -c "import wget; wget.download('https://github.com/haskell/cabal/archive
 python3 -c "import shutil; shutil.unpack_archive('/tmp/cabal.zip', '/tmp')"
 mv "/tmp/cabal-cabal-install-v3.14.2.0" "/tmp/cabal"
 sed -ie "s/+ofd-locking/-ofd-locking/" "/tmp/cabal/bootstrap/linux-9.6.4.json"
+/tmp/ghc-toolset-9.6.4/root/usr/bin/ghc-pkg-9.6.4 recache
 (cd "/tmp/cabal" && python3 "./bootstrap/bootstrap.py" -d "./bootstrap/linux-9.6.4.json" -w "/tmp/ghc-toolset-9.6.4/root/usr/bin/ghc-9.6.4")
 PATH="/tmp/ghc-toolset-9.6.4/root/usr/bin:${PATH}" "/tmp/cabal/_build/bin/cabal" v2-update
 PATH="/tmp/ghc-toolset-9.6.4/root/usr/bin:${PATH}" "/tmp/cabal/_build/bin/cabal" v2-install cabal-install --constraint="lukko -ofd-locking" --overwrite-policy=always --install-method=copy --installdir="/tmp/ghc-toolset-9.6.4/root/usr/bin"
