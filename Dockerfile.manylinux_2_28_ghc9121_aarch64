@@ -9,11 +9,20 @@ RUN ln -s "/usr/lib64/libgmp.so.10" "/usr/lib64/libgmp.so"
 RUN ln -s "/usr/lib64/libtinfo.so.6" "/usr/lib64/libtinfo.so"
 
 # Install prerequisites
-RUN yum install -y gmp-devel ncurses-devel
+RUN yum install -y gmp-devel ncurses-devel ncurses-devel
 
 # Install GHC and Cabal
 RUN ln -s "/usr/local/bin/python3.12" "/usr/local/bin/python3"
 RUN python3 -m pip install wget==3.2
-RUN python3 -c "import wget; wget.download('https://raw.githubusercontent.com/folivetti/ghc_docker/refs/heads/main/install_ghc_aarch64.bash', '/tmp/install_ghc_aarch64.bash')"
-RUN chmod +x /tmp/install_ghc_aarch64.bash
-RUN /tmp/install_ghc_aarch64.bash 9.12.1
+#RUN python3 -c "import wget; wget.download('https://raw.githubusercontent.com/folivetti/ghc_docker/refs/heads/main/install_ghc_aarch64.bash', '/tmp/install_ghc_aarch64.bash')"
+#RUN chmod +x /tmp/install_ghc_aarch64.bash
+#RUN /tmp/install_ghc_aarch64.bash 9.12.1
+RUN curl -L https://downloads.haskell.org/~ghcup/aarch64-linux-ghcup -o /usr/bin/ghcup && \
+    chmod +x /usr/bin/ghcup
+
+ENV PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+
+RUN ghcup install cabal 3.14.2.0 
+RUN ghcup install ghc 9.12.1
+RUN ghcup set 9.12.1
+RUN echo "export PATH=\$HOME/.ghcup/bin:\$PATH" >> ~/.bashrc

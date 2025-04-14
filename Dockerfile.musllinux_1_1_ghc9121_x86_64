@@ -9,6 +9,6 @@ RUN apk add ncurses ncurses-dev
 # Install GHC and Cabal
 RUN ln -s "/usr/local/bin/python3.12" "/usr/local/bin/python3"
 RUN python3 -m pip install wget==3.2
-RUN python3 -c "import wget; wget.download('https://raw.githubusercontent.com/folivetti/ghc_docker/refs/heads/main/install_ghc_x86.bash', '/tmp/install_ghc_x86.bash')"
-RUN chmod +x /tmp/install_ghc_x86.bash
-RUN /tmp/install_ghc_x86.bash 9.12.1
+RUN python3 -c "import wget; wget.download('https://raw.githubusercontent.com/folivetti/ghc_docker/refs/heads/main/install_ghc_x86_musl.bash', '/tmp/install_ghc_x86_musl.bash')"
+RUN chmod +x /tmp/install_ghc_x86_musl.bash
+RUN /tmp/install_ghc_x86_musl.bash 9.12.1

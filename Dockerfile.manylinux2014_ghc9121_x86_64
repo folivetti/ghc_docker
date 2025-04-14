@@ -9,7 +9,8 @@ RUN ln -s "/usr/lib64/libgmp.so.10" "/usr/lib64/libgmp.so"
 RUN ln -s "/usr/lib64/libtinfo.so.6" "/usr/lib64/libtinfo.so"
 
 # Install prerequisites
-RUN yum install -y gmp-devel ncurses-devel
+RUN yum install -y gmp-devel ncurses-devel epel-release
+RUN yum install -y nlopt nlopt-devel
 
 # Install GHC and Cabal
 RUN ln -s "/usr/local/bin/python3.12" "/usr/local/bin/python3"

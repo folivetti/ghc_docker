@@ -7,6 +7,7 @@ RUN ln -s "/usr/lib64/libgmp.so.10" "/usr/lib64/libgmp.so"
 
 # Link libtinfo.so.6 to libtinfo.so
 RUN ln -s "/usr/lib64/libtinfo.so.6" "/usr/lib64/libtinfo.so"
+RUN ln -s "/usr/lib64/libtinfo.so.6" "/usr/lib64/libtinfo.so.5"
 
 # Install prerequisites
 RUN yum install -y gmp-devel ncurses-devel
