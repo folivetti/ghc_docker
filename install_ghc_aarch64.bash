@@ -16,7 +16,7 @@ python3 -c "import shutil; shutil.unpack_archive('/tmpghc/cabal.zip', '/tmpghc')
 mv "/tmpghc/cabal-cabal-install-v3.14.2.0" "/tmpghc/cabal"
 sed -ie "s/+ofd-locking/-ofd-locking/" "/tmpghc/cabal/bootstrap/linux-9.6.4.json"
 /tmpghc/ghc-toolset-9.6.4/root/usr/bin/ghc-pkg-9.6.4 recache
-(cd "/tmpghc/cabal" && cabal build --with-compiler="/tmpghc/ghc-toolset-9.6.4/root/usr/bin/ghc-9.6.4" --dry-run cabal-install:exe:cabal)
+(cd "/tmpghc/cabal" && ./_build/bin/cabal build --with-compiler="/tmpghc/ghc-toolset-9.6.4/root/usr/bin/ghc-9.6.4" --dry-run cabal-install:exe:cabal)
 (cd "/tmpghc/cabal" && cp dist-newstyle/cache/plan.json bootstrap/aarch64-9.6.4.plan.json)
 (cd "/tmpghc/cabal/bootstrap" && cabal run -v0 cabal-bootstrap-gen -- aarch64-9.6.4.plan.json | tee aarch64-9.6.4.json)
 # (cd "/tmpghc/cabal" && python3 "./bootstrap/bootstrap.py" -d "./bootstrap/linux-9.6.4.json" -w "/tmpghc/ghc-toolset-9.6.4/root/usr/bin/ghc-9.6.4")
