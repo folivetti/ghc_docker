@@ -18,3 +18,14 @@ RUN python3 -m pip install wget==3.2
 RUN python3 -c "import wget; wget.download('https://raw.githubusercontent.com/folivetti/ghc_docker/refs/heads/main/install_ghc_x86.bash', '/tmp/install_ghc_x86.bash')"
 RUN chmod +x /tmp/install_ghc_x86.bash
 RUN /tmp/install_ghc_x86.bash 9.12.1
+
+# instal nlopt
+RUN python3.12 -c "import wget; wget.download('https://github.com/stevengj/nlopt/archive/v2.7.1.tar.gz', '/tmp/nlopt.tar.gz')"
+RUN yum install -y cmake3
+RUN (cd "/tmp" && tar zxvf nlopt.tar.gz)
+RUN (mv "/tmp/nlopt-2.7.1" "/tmp/nlopt")
+RUN (cd "/tmp/nlopt" && cmake3 . && make && make install)
+RUN (echo export LIBRARY_PATH="/usr/local/lib64:$LIBRARY_PATH" >> ~/.bashrc)
+RUN (echo export LD_LIBRARY_PATH="/usr/local/lib64:$LD_LIBRARY_PATH" >> ~/.bashrc)
+RUN (echo export C_INCLUDE_PATH="/usr/local/include:$C_INCLUDE_PATH" >> ~/.bashrc)
+RUN (echo export PKG_CONFIG_PATH="/usr/local/lib64/pkgconfig:$PKG_CONFIG_PATH" >> ~/.bashrc)
